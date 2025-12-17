@@ -117,10 +117,13 @@ function predictCategory(title, description, tags = []) {
   const titleLower = title.toLowerCase();
   const scores = {};
   
+  // Log for debugging
+  console.log('🔍 ML Prediction Input:', { title, description: description.substring(0, 100) });
+  
   // Calculate scores for each category
   Object.keys(categoryKeywords).forEach(category => {
-    // Give title 5x more weight than description
-    const titleScore = calculateCategoryScore(title, categoryKeywords[category]) * 5;
+    // Give title 10x more weight than description (increased from 5x)
+    const titleScore = calculateCategoryScore(title, categoryKeywords[category]) * 10;
     const descScore = calculateCategoryScore(description, categoryKeywords[category]);
     scores[category] = titleScore + descScore;
   });
@@ -142,7 +145,7 @@ function predictCategory(title, description, tags = []) {
     for (const keyword of keywords) {
       if (titleWords.some(word => word.includes(keyword.toLowerCase()))) {
         // If found in first 5 words, boost this category significantly
-        scores[category] = (scores[category] || 0) + 100;
+        scores[category] = (scores[category] || 0) + 200; // Increased from 100
         if (scores[category] > maxScore) {
           maxScore = scores[category];
           bestCategory = category;
@@ -150,6 +153,8 @@ function predictCategory(title, description, tags = []) {
       }
     }
   }
+  
+  console.log('✅ ML Prediction Result:', { bestCategory, maxScore });
   
   // Return results sorted by score
   const sortedResults = Object.entries(scores)
