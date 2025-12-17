@@ -143,8 +143,16 @@ router.post('/', authMiddleware, async (req, res) => {
   try {
     const { url, folderId } = req.body;
 
+    console.log('📥 New link request:', url);
+
     // Extract metadata from URL
     const metadata = await extractLinkMetadata(url);
+    
+    console.log('📊 Extracted metadata:', {
+      title: metadata.title,
+      description: metadata.description?.substring(0, 100),
+      source: metadata.source
+    });
 
     let targetFolderId = folderId;
     let mlPrediction = null;
@@ -158,6 +166,8 @@ router.post('/', authMiddleware, async (req, res) => {
         metadata.title || url,
         metadata.description || ''
       );
+
+      console.log('🎯 Hierarchy suggestion:', hierarchy);
 
       mlPrediction = {
         mainFolder: hierarchy.mainFolder,
