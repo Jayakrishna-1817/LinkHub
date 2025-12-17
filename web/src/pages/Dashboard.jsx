@@ -16,6 +16,7 @@ export default function Dashboard() {
   const [showAddLink, setShowAddLink] = useState(false);
   const [showAddFolder, setShowAddFolder] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   useEffect(() => {
     loadData();
@@ -97,7 +98,7 @@ export default function Dashboard() {
       <div className="flex-1 flex flex-col">
         <Header onAddLink={() => setShowAddLink(true)} />
         
-        <main className="flex-1 p-8">
+        <main className="flex-1 p-4 sm:p-6 md:p-8 overflow-y-auto">
           {selectedFolder && !selectedFolder.isSubFolder ? (
             // Show sub-folders if main folder is selected
             <div className="animate-fadeIn">

@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Add touch-friendly tap targets */
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;

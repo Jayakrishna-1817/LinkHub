@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { useAuthStore } from '../store/authStore';
 import { useLinkStore } from '../store/linkStore';
 import Logo from './Logo';
+import { X } from 'lucide-react';
 
 import { folderAPI } from '../services/api';
 
-export default function Sidebar({ folders, onAddFolder, onFolderDeleted }) {
+export default function Sidebar({ folders, onAddFolder, onFolderDeleted, isMobileOpen, onCloseMobile }) {
   const { user, logout } = useAuthStore();
   const { selectedFolder, setSelectedFolder } = useLinkStore();
   const [expandedFolders, setExpandedFolders] = useState({});
@@ -39,15 +40,40 @@ export default function Sidebar({ folders, onAddFolder, onFolderDeleted }) {
   };
 
   return (
-    <div className="w-64 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 flex flex-col shadow-2xl">
-      <div className="p-6 border-b border-slate-700/50 backdrop-blur-sm">
-        <button 
-          onClick={() => setSelectedFolder(null)}
-          className="flex items-center gap-3 text-2xl font-bold text-white hover:text-blue-400 transition-all duration-300 group"
+    <>
+      {/* Mobile Overlay */}
+      {isMobileOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden animate-fadeIn"
+          onClick={onCloseMobile}
+        />
+      )}
+      
+      {/* Sidebar */}
+      <div className={`
+        fixed lg:relative inset-y-0 left-0 z-50
+        w-64 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 
+        flex flex-col shadow-2xl
+        transform transition-transform duration-300 ease-in-out
+        ${isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+      `}>
+        {/* Mobile Close Button */}
+        <button
+          onClick={onCloseMobile}
+          className="lg:hidden absolute top-4 right-4 p-2 rounded-lg hover:bg-slate-700/50 transition-colors z-10"
+          aria-label="Close menu"
         >
-          <Logo size={40} className="group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
-          <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">LinkHub</span>
+          <X size={24} className="text-white" />
         </button>
+
+        <div className="p-6 border-b border-slate-700/50 backdrop-blur-sm">
+          <button 
+            onClick={() => { setSelectedFolder(null); onCloseMobile && onCloseMobile(); }}
+            className="flex items-center gap-3 text-2xl font-bold text-white hover:text-blue-400 transition-all duration-300 group"
+          >
+            <Logo size={40} className="group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">LinkHub</span>
+          </button>
         <p className="text-base font-semibold text-slate-200 mt-3 flex items-center gap-2">
           <span className="w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse"></span>
           {user?.name}
@@ -88,6 +114,7 @@ export default function Sidebar({ folders, onAddFolder, onFolderDeleted }) {
                     if (hasSubFolders && !isExpanded) {
                       toggleFolder(folder._id);
                     }
+                    onCloseMobile && onCloseMobile();
                   }}
                   className={`flex-1 text-left px-4 py-3 rounded-xl mb-2 transition-all duration-200 ${
                     !hasSubFolders ? 'ml-8' : ''
@@ -115,7 +142,7 @@ export default function Sidebar({ folders, onAddFolder, onFolderDeleted }) {
               {isExpanded && subFolders.map((subFolder) => (
                 <div key={subFolder._id} className="flex items-center group">
                   <button
-                    onClick={() => setSelectedFolder(subFolder)}
+                    onClick={() => { setSelectedFolder(subFolder); onCloseMobile && onCloseMobile(); }}
                     className={`flex-1 text-left px-4 py-3 pl-12 rounded-xl mb-2 transition-all duration-200 text-sm ${
                       selectedFolder?._id === subFolder._id
                         ? 'bg-gradient-to-r from-blue-500/80 to-purple-500/80 text-white font-semibold shadow-md'
@@ -149,5 +176,6 @@ export default function Sidebar({ folders, onAddFolder, onFolderDeleted }) {
         </button>
       </div>
     </div>
+    </>
   );
 }
