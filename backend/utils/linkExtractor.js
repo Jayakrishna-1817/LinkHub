@@ -48,18 +48,49 @@ async function extractLinkMetadata(url) {
 // Extract YouTube metadata
 async function extractYouTubeMetadata(url, metadata) {
   try {
+    // Try multiple approaches
     const response = await axios.get(url, {
-      headers: { 'User-Agent': 'Mozilla/5.0' }
+      headers: { 
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'DNT': '1',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1'
+      }
     });
-    const $ = cheerio.load(response.data);
+    
+    const html = response.data;
+    const $ = cheerio.load(html);
 
+    // Try multiple selectors for title
     metadata.title = $('meta[property="og:title"]').attr('content') || 
-                     $('title').text() || 'YouTube Video';
-    metadata.description = $('meta[property="og:description"]').attr('content') || '';
+                     $('meta[name="title"]').attr('content') ||
+                     $('title').text().replace(' - YouTube', '') ||
+                     '';
+    
+    // Try to extract from JSON-LD or initial data
+    if (!metadata.title || metadata.title.length < 5) {
+      // Look for title in page source
+      const titleMatch = html.match(/"title":"([^"]+)"/);
+      if (titleMatch && titleMatch[1]) {
+        metadata.title = titleMatch[1].replace(/\\u0026/g, '&').replace(/\\"/g, '"');
+      }
+    }
+
+    metadata.description = $('meta[property="og:description"]').attr('content') || 
+                          $('meta[name="description"]').attr('content') || '';
     metadata.thumbnail = $('meta[property="og:image"]').attr('content') || '';
 
+    console.log('🎥 YouTube extraction result:', { 
+      title: metadata.title, 
+      hasDescription: !!metadata.description,
+      titleLength: metadata.title?.length 
+    });
+
     // Extract tags from title only (not description to avoid confusion)
-    const titleText = metadata.title.toLowerCase();
+    const titleText = (metadata.title || '').toLowerCase();
     const techKeywords = ['react', 'javascript', 'python', 'java', 'node', 'angular', 'vue', 'typescript', 'css', 'html', 'docker', 'kubernetes', 'aws', 'azure', 'ai', 'ml'];
     
     // Only add tags that appear in the title (more reliable)
@@ -67,6 +98,7 @@ async function extractYouTubeMetadata(url, metadata) {
 
     return metadata;
   } catch (error) {
+    console.error('❌ YouTube extraction failed:', error.message);
     return metadata;
   }
 }
