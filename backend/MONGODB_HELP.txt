@@ -1,0 +1,10 @@
+# Try one of these MongoDB connection strings:
+
+# Option 1: SRV Connection (current)
+MONGODB_URI=mongodb+srv://jksmart1817_db_user:jk@link.vcng8o0.mongodb.net/linkfind?retryWrites=true&w=majority
+
+# Option 2: Standard Connection (try this if SRV fails)
+# Get this from MongoDB Atlas: Cluster > Connect > Connect your application > Drivers
+# MONGODB_URI=mongodb://jksmart1817_db_user:jk@link-shard-00-00.vcng8o0.mongodb.net:27017,link-shard-00-01.vcng8o0.mongodb.net:27017,link-shard-00-02.vcng8o0.mongodb.net:27017/linkfind?ssl=true&replicaSet=atlas-xxxxx-shard-0&authSource=admin&retryWrites=true&w=majority
+
+# If you're behind a firewall/proxy, you may need to configure network settings
