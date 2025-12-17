@@ -65,6 +65,7 @@ function getColorForSource(source) {
 
 function getIconForCategory(category) {
   const iconMap = {
+    // Technology & Programming
     'Operating Systems': '🖥️', 'Computer Networks': '🌐', 'Data Structures': '🔢',
     'Database Management': '🗄️', 'Artificial Intelligence': '🤖',
     'React': '⚛️', 'JavaScript': '📜', 'Python': '🐍', 'Java': '☕',
@@ -73,20 +74,66 @@ function getIconForCategory(category) {
     'Cloud Computing': '☁️', 'Software Engineering': '⚙️', 'Blockchain': '⛓️',
     'Programming Tools': '🛠️', 'Development Tools': '🔨',
     'Interview Preparation': '📝', 'Salesforce': '☁️', 'Career & Jobs': '💼',
-    'General': '📂'
+    
+    // Entertainment & Media
+    'Movies & TV Shows': '🎬', 'Music': '🎵', 'Gaming': '🎮', 'Anime & Manga': '📺',
+    
+    // Lifestyle & Personal
+    'Fitness & Health': '💪', 'Cooking & Recipes': '🍳', 'Travel': '✈️',
+    'Fashion & Style': '👗', 'Photography': '📷',
+    
+    // Business & Finance
+    'Business': '💼', 'Finance & Investing': '💰', 'Real Estate': '🏠',
+    
+    // News & Education
+    'News & Politics': '📰', 'Science': '🔬', 'History': '📜', 'Education': '📚',
+    
+    // Sports & Activities
+    'Sports': '⚽', 'Outdoor & Nature': '🌲',
+    
+    // Arts & Creativity
+    'Art & Design': '🎨', 'DIY & Crafts': '🛠️',
+    
+    // Miscellaneous
+    'Books & Reading': '📖', 'Automotive': '🚗', 'Pets & Animals': '🐾',
+    'Home & Garden': '🏡', 'General': '📂'
   };
   return iconMap[category] || '📁';
 }
 
 function getColorForCategory(category) {
   const colorMap = {
+    // Technology & Programming
     'Operating Systems': '#0078D4', 'Computer Networks': '#2196F3', 'Data Structures': '#9C27B0',
     'Database Management': '#14B8A6', 'Artificial Intelligence': '#8B5CF6',
     'React': '#61DAFB', 'JavaScript': '#F7DF1E', 'Python': '#3776AB', 'Java': '#007396',
     'C Programming': '#A8B9CC', 'C++': '#00599C', 'Web Development': '#10B981',
     'DevOps': '#F59E0B', 'Mobile Development': '#06B6D4', 'Cyber Security': '#EF4444',
     'Cloud Computing': '#4285F4', 'Software Engineering': '#6366F1', 'Blockchain': '#F2A900',
-    'Interview Preparation': '#10B981', 'Salesforce': '#00A1E0', 'Career & Jobs': '#7C3AED'
+    'Interview Preparation': '#10B981', 'Salesforce': '#00A1E0', 'Career & Jobs': '#7C3AED',
+    
+    // Entertainment & Media
+    'Movies & TV Shows': '#E50914', 'Music': '#1DB954', 'Gaming': '#9146FF', 'Anime & Manga': '#FF6740',
+    
+    // Lifestyle & Personal
+    'Fitness & Health': '#FF6B6B', 'Cooking & Recipes': '#FF9800', 'Travel': '#00BCD4',
+    'Fashion & Style': '#E91E63', 'Photography': '#607D8B',
+    
+    // Business & Finance
+    'Business': '#34495E', 'Finance & Investing': '#2ECC71', 'Real Estate': '#16A085',
+    
+    // News & Education
+    'News & Politics': '#C0392B', 'Science': '#3498DB', 'History': '#8E44AD', 'Education': '#F39C12',
+    
+    // Sports & Activities
+    'Sports': '#27AE60', 'Outdoor & Nature': '#229954',
+    
+    // Arts & Creativity
+    'Art & Design': '#E74C3C', 'DIY & Crafts': '#D35400',
+    
+    // Miscellaneous
+    'Books & Reading': '#795548', 'Automotive': '#212121', 'Pets & Animals': '#FF9F43',
+    'Home & Garden': '#26A69A'
   };
   return colorMap[category] || '#3B82F6';
 }

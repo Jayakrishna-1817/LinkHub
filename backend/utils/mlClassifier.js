@@ -4,6 +4,7 @@ const tokenizer = new natural.WordTokenizer();
 
 // Define category keywords for automatic classification
 const categoryKeywords = {
+  // Technology & Programming
   'Operating Systems': ['operating system', 'os ', ' os', 'linux', 'unix', 'windows', 'kernel', 'process', 'thread', 'memory management', 'scheduling', 'file system', 'operating systems'],
   'Computer Networks': ['computer networks', 'networking', 'tcp', 'ip protocol', 'http protocol', 'network protocol', 'router', 'switch', 'osi model', 'network security', 'computer networking'],
   'Data Structures': ['dsa', 'data structures', 'data structure', 'algorithms', 'algorithm', 'array', 'linked list', 'tree', 'graph', 'stack', 'queue', 'sorting', 'searching', 'heap', 'hash', 'hashing', 'binary tree', 'bst', 'recursion', 'dynamic programming', 'dp', 'greedy', 'backtracking', 'time complexity', 'space complexity', 'big o'],
@@ -24,7 +25,45 @@ const categoryKeywords = {
   'Blockchain': ['blockchain', 'cryptocurrency', 'bitcoin', 'ethereum', 'smart contract', 'web3', 'nft', 'defi'],
   'Interview Preparation': ['interview', 'interview guide', 'interview preparation', 'job interview', 'interview questions', 'coding interview', 'technical interview', 'interview tips', 'interview prep'],
   'Salesforce': ['salesforce', 'salesforce crm', 'apex', 'visualforce', 'lightning', 'salesforce admin', 'salesforce developer'],
-  'Career & Jobs': ['career', 'job', 'resume', 'portfolio', 'hiring', 'recruitment', 'job search', 'career guide', 'internship', 'intern', 'job application', 'application', 'developer position', 'software position', 'fresher', 'entry level']
+  'Career & Jobs': ['career', 'job', 'resume', 'portfolio', 'hiring', 'recruitment', 'job search', 'career guide', 'internship', 'intern', 'job application', 'application', 'developer position', 'software position', 'fresher', 'entry level'],
+  
+  // Entertainment & Media
+  'Movies & TV Shows': ['movie', 'film', 'cinema', 'tv show', 'series', 'netflix', 'hulu', 'disney plus', 'actor', 'actress', 'director', 'trailer', 'review', 'imdb', 'streaming'],
+  'Music': ['music', 'song', 'album', 'artist', 'band', 'spotify', 'apple music', 'youtube music', 'concert', 'playlist', 'lyrics', 'guitar', 'piano', 'drum', 'rap', 'rock', 'pop', 'jazz', 'classical'],
+  'Gaming': ['game', 'gaming', 'video game', 'gamer', 'playstation', 'xbox', 'nintendo', 'pc gaming', 'steam', 'twitch', 'esports', 'fps', 'rpg', 'mmo', 'minecraft', 'fortnite', 'valorant'],
+  'Anime & Manga': ['anime', 'manga', 'otaku', 'japanese animation', 'crunchyroll', 'funimation', 'naruto', 'one piece', 'attack on titan', 'my hero academia', 'manga reader'],
+  
+  // Lifestyle & Personal
+  'Fitness & Health': ['fitness', 'workout', 'exercise', 'gym', 'yoga', 'health', 'nutrition', 'diet', 'wellness', 'meditation', 'cardio', 'weight loss', 'muscle', 'training', 'running', 'bodybuilding'],
+  'Cooking & Recipes': ['recipe', 'cooking', 'food', 'cuisine', 'kitchen', 'baking', 'chef', 'restaurant', 'meal', 'ingredient', 'vegetarian', 'vegan', 'dessert', 'breakfast', 'dinner'],
+  'Travel': ['travel', 'trip', 'vacation', 'tour', 'destination', 'hotel', 'flight', 'backpacking', 'adventure', 'tourism', 'passport', 'visa', 'itinerary', 'booking'],
+  'Fashion & Style': ['fashion', 'style', 'clothing', 'outfit', 'trendy', 'designer', 'brand', 'makeup', 'beauty', 'cosmetics', 'skincare', 'hairstyle', 'accessories'],
+  'Photography': ['photography', 'photo', 'camera', 'lens', 'dslr', 'photoshoot', 'portrait', 'landscape', 'editing', 'lightroom', 'photoshop', 'instagram'],
+  
+  // Business & Finance
+  'Business': ['business', 'startup', 'entrepreneur', 'company', 'marketing', 'sales', 'strategy', 'management', 'leadership', 'growth', 'innovation', 'branding'],
+  'Finance & Investing': ['finance', 'investing', 'stock market', 'trading', 'cryptocurrency', 'forex', 'portfolio', 'dividend', 'investment', 'money', 'wealth', 'savings', 'budget'],
+  'Real Estate': ['real estate', 'property', 'house', 'apartment', 'rent', 'buy', 'mortgage', 'housing', 'home'],
+  
+  // News & Education
+  'News & Politics': ['news', 'politics', 'election', 'government', 'policy', 'current events', 'breaking news', 'world news', 'journalism'],
+  'Science': ['science', 'physics', 'chemistry', 'biology', 'astronomy', 'research', 'experiment', 'theory', 'discovery', 'scientific'],
+  'History': ['history', 'historical', 'ancient', 'medieval', 'war', 'civilization', 'culture', 'heritage', 'archaeology'],
+  'Education': ['education', 'learning', 'study', 'school', 'college', 'university', 'course', 'tutorial', 'lesson', 'teacher', 'student'],
+  
+  // Sports & Activities
+  'Sports': ['sports', 'football', 'soccer', 'basketball', 'cricket', 'tennis', 'baseball', 'hockey', 'athletics', 'olympics', 'championship', 'match', 'player', 'team'],
+  'Outdoor & Nature': ['nature', 'outdoor', 'hiking', 'camping', 'wildlife', 'forest', 'mountain', 'beach', 'ocean', 'environment', 'ecology'],
+  
+  // Arts & Creativity
+  'Art & Design': ['art', 'design', 'drawing', 'painting', 'illustration', 'graphic design', 'creative', 'artist', 'gallery', 'exhibition', 'sketch'],
+  'DIY & Crafts': ['diy', 'craft', 'handmade', 'project', 'tutorial', 'build', 'make', 'create', 'woodworking', 'sewing'],
+  
+  // Miscellaneous
+  'Books & Reading': ['book', 'novel', 'reading', 'author', 'literature', 'fiction', 'non-fiction', 'poetry', 'bestseller', 'kindle'],
+  'Automotive': ['car', 'auto', 'vehicle', 'automotive', 'driving', 'racing', 'motorcycle', 'truck', 'engine', 'mechanic'],
+  'Pets & Animals': ['pet', 'dog', 'cat', 'animal', 'puppy', 'kitten', 'veterinary', 'wildlife', 'zoo'],
+  'Home & Garden': ['home', 'garden', 'interior', 'decoration', 'furniture', 'plants', 'landscaping', 'renovation']
 };
 
 // Source-specific keywords for detection
