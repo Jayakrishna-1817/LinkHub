@@ -48,57 +48,75 @@ async function extractLinkMetadata(url) {
 // Extract YouTube metadata
 async function extractYouTubeMetadata(url, metadata) {
   try {
-    // Try multiple approaches
-    const response = await axios.get(url, {
-      headers: { 
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-        'Accept-Language': 'en-US,en;q=0.5',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'DNT': '1',
-        'Connection': 'keep-alive',
-        'Upgrade-Insecure-Requests': '1'
+    // Use YouTube oEmbed API (official, won't get rate limited)
+    const oembedUrl = `https://www.youtube.com/oembed?url=${encodeURIComponent(url)}&format=json`;
+    
+    console.log('🎥 Fetching YouTube metadata via oEmbed...');
+    const response = await axios.get(oembedUrl, {
+      timeout: 10000,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; LinkHubBot/1.0)'
       }
     });
-    
-    const html = response.data;
-    const $ = cheerio.load(html);
 
-    // Try multiple selectors for title
-    metadata.title = $('meta[property="og:title"]').attr('content') || 
-                     $('meta[name="title"]').attr('content') ||
-                     $('title').text().replace(' - YouTube', '') ||
-                     '';
-    
-    // Try to extract from JSON-LD or initial data
-    if (!metadata.title || metadata.title.length < 5) {
-      // Look for title in page source
-      const titleMatch = html.match(/"title":"([^"]+)"/);
-      if (titleMatch && titleMatch[1]) {
-        metadata.title = titleMatch[1].replace(/\\u0026/g, '&').replace(/\\"/g, '"');
-      }
+    if (response.data) {
+      metadata.title = response.data.title || 'YouTube Video';
+      metadata.description = ''; // oEmbed doesn't provide description
+      metadata.thumbnail = response.data.thumbnail_url || '';
+      
+      console.log('✅ YouTube oEmbed success:', { 
+        title: metadata.title,
+        titleLength: metadata.title?.length 
+      });
+
+      // Extract tags from title
+      const titleText = (metadata.title || '').toLowerCase();
+      const techKeywords = ['react', 'javascript', 'python', 'java', 'node', 'angular', 'vue', 'typescript', 'css', 'html', 'docker', 'kubernetes', 'aws', 'azure', 'ai', 'ml', 'dsa', 'algorithm', 'data structure'];
+      
+      metadata.tags = techKeywords.filter(keyword => titleText.includes(keyword));
     }
-
-    metadata.description = $('meta[property="og:description"]').attr('content') || 
-                          $('meta[name="description"]').attr('content') || '';
-    metadata.thumbnail = $('meta[property="og:image"]').attr('content') || '';
-
-    console.log('🎥 YouTube extraction result:', { 
-      title: metadata.title, 
-      hasDescription: !!metadata.description,
-      titleLength: metadata.title?.length 
-    });
-
-    // Extract tags from title only (not description to avoid confusion)
-    const titleText = (metadata.title || '').toLowerCase();
-    const techKeywords = ['react', 'javascript', 'python', 'java', 'node', 'angular', 'vue', 'typescript', 'css', 'html', 'docker', 'kubernetes', 'aws', 'azure', 'ai', 'ml'];
-    
-    // Only add tags that appear in the title (more reliable)
-    metadata.tags = techKeywords.filter(keyword => titleText.includes(keyword));
 
     return metadata;
   } catch (error) {
-    console.error('❌ YouTube extraction failed:', error.message);
+    console.error('❌ YouTube oEmbed failed:', error.message);
+    
+    // Fallback: Try direct scraping with minimal headers
+    try {
+      console.log('🔄 Trying fallback scraping...');
+      const response = await axios.get(url, {
+        timeout: 8000,
+        headers: { 
+          'User-Agent': 'Mozilla/5.0 (compatible; LinkHubBot/1.0)'
+        }
+      });
+      
+      const html = response.data;
+      const $ = cheerio.load(html);
+
+      metadata.title = $('meta[property="og:title"]').attr('content') || 
+                       $('meta[name="title"]').attr('content') ||
+                       $('title').text().replace(' - YouTube', '') ||
+                       '';
+      
+      // Try to extract from JSON in page
+      if (!metadata.title || metadata.title.length < 5) {
+        const titleMatch = html.match(/"title":"([^"]+)"/);
+        if (titleMatch && titleMatch[1]) {
+          metadata.title = titleMatch[1].replace(/\\u0026/g, '&').replace(/\\"/g, '"');
+        }
+      }
+
+      metadata.description = $('meta[property="og:description"]').attr('content') || '';
+      metadata.thumbnail = $('meta[property="og:image"]').attr('content') || '';
+
+      console.log('✅ Fallback scraping result:', { 
+        title: metadata.title,
+        titleLength: metadata.title?.length 
+      });
+    } catch (fallbackError) {
+      console.error('❌ Fallback also failed:', fallbackError.message);
+    }
+
     return metadata;
   }
 }
