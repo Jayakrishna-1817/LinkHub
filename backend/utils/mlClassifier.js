@@ -6,7 +6,7 @@ const tokenizer = new natural.WordTokenizer();
 const categoryKeywords = {
   'Operating Systems': ['operating system', 'os ', ' os', 'linux', 'unix', 'windows', 'kernel', 'process', 'thread', 'memory management', 'scheduling', 'file system', 'operating systems'],
   'Computer Networks': ['computer networks', 'networking', 'tcp', 'ip protocol', 'http protocol', 'network protocol', 'router', 'switch', 'osi model', 'network security', 'computer networking'],
-  'Data Structures': ['dsa', 'data structures', 'algorithms', 'array', 'linked list', 'tree', 'graph', 'stack', 'queue', 'sorting', 'searching'],
+  'Data Structures': ['dsa', 'data structures', 'data structure', 'algorithms', 'algorithm', 'array', 'linked list', 'tree', 'graph', 'stack', 'queue', 'sorting', 'searching', 'heap', 'hash', 'hashing', 'binary tree', 'bst', 'recursion', 'dynamic programming', 'dp', 'greedy', 'backtracking', 'time complexity', 'space complexity', 'big o'],
   'Database Management': ['dbms', 'database', 'sql', 'nosql', 'mongodb', 'postgresql', 'mysql', 'query', 'normalization', 'acid', 'transactions'],
   'Artificial Intelligence': ['ai', 'artificial intelligence', 'machine learning', 'deep learning', 'neural network', 'nlp', 'computer vision', 'ml'],
   'React': ['react js', 'react.js', 'reactjs', 'react tutorial', 'react course', 'react basics', 'react hooks', 'react component', 'jsx', 'redux', 'nextjs', 'next.js', 'state management', 'props', 'virtual dom'],
