@@ -154,7 +154,34 @@ function predictCategory(title, description, tags = []) {
     }
   }
   
-  console.log('✅ ML Prediction Result:', { bestCategory, maxScore });
+  // Prioritization: Frameworks/Libraries over base languages
+  // If React is detected, it should override JavaScript
+  const specificFrameworks = ['React', 'Python', 'Java', 'C++', 'C Programming'];
+  const genericLanguages = ['JavaScript', 'Web Development'];
+  
+  for (const framework of specificFrameworks) {
+    if (scores[framework] > 0) {
+      for (const generic of genericLanguages) {
+        // If a specific framework has a decent score and generic has similar/higher score
+        // Boost the specific framework to win
+        if (scores[generic] && scores[framework] >= scores[generic] * 0.3) {
+          scores[framework] += 300; // Strong boost for specific frameworks
+          console.log(`🎯 Prioritizing ${framework} over ${generic}`);
+        }
+      }
+    }
+  }
+  
+  // Recalculate best category after prioritization
+  maxScore = 0;
+  Object.entries(scores).forEach(([category, score]) => {
+    if (score > maxScore) {
+      maxScore = score;
+      bestCategory = category;
+    }
+  });
+  
+  console.log('✅ ML Prediction Result:', { bestCategory, maxScore, topScores: Object.entries(scores).sort(([,a], [,b]) => b - a).slice(0, 3) });
   
   // Return results sorted by score
   const sortedResults = Object.entries(scores)
