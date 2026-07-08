@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useAuthStore } from '../store/authStore';
 import { useLinkStore } from '../store/linkStore';
 import Logo from './Logo';
-import { X } from 'lucide-react';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 
 import { folderAPI } from '../services/api';
 
@@ -63,7 +63,7 @@ export default function Sidebar({ folders, onAddFolder, onFolderDeleted, isMobil
           className="lg:hidden absolute top-4 right-4 p-2 rounded-lg hover:bg-slate-700/50 transition-colors z-10"
           aria-label="Close menu"
         >
-          <X size={24} className="text-white" />
+          <XMarkIcon className="w-6 h-6 text-white" />
         </button>
 
         <div className="p-6 border-b border-slate-700/50 backdrop-blur-sm">
@@ -135,7 +135,7 @@ export default function Sidebar({ folders, onAddFolder, onFolderDeleted, isMobil
                   className="opacity-0 group-hover:opacity-100 text-red-500 hover:text-red-700 px-2 text-sm transition"
                   title="Delete folder"
                 >
-                  🗑️
+                  Delete
                 </button>
               </div>
               
@@ -157,7 +157,7 @@ export default function Sidebar({ folders, onAddFolder, onFolderDeleted, isMobil
                     className="opacity-0 group-hover:opacity-100 text-red-500 hover:text-red-700 px-2 text-sm transition"
                     title="Delete folder"
                   >
-                    🗑️
+                    Delete
                   </button>
                 </div>
               ))}
@@ -171,7 +171,6 @@ export default function Sidebar({ folders, onAddFolder, onFolderDeleted, isMobil
           onClick={handleLogout}
           className="w-full px-4 py-3 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200 font-semibold flex items-center justify-center gap-2"
         >
-          <span>🚪</span>
           Logout
         </button>
       </div>

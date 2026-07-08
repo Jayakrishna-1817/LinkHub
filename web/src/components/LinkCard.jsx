@@ -3,13 +3,13 @@ import { useLinkStore } from '../store/linkStore';
 import toast from 'react-hot-toast';
 
 const sourceIcons = {
-  youtube: '🎥',
-  github: '💻',
-  medium: '📝',
-  twitter: '🐦',
-  stackoverflow: '💡',
-  reddit: '🔴',
-  other: '🔗'
+  youtube: 'YT',
+  github: 'GH',
+  medium: 'MD',
+  twitter: 'TW',
+  stackoverflow: 'SO',
+  reddit: 'RD',
+  other: 'LINK'
 };
 
 const sourceColors = {
@@ -77,7 +77,7 @@ export default function LinkCard({ link }) {
           onClick={handleToggleFavorite}
           className="text-2xl hover:scale-125 transition-transform duration-200"
         >
-          {safeLink.isFavorite ? '⭐' : '☆'}
+          {safeLink.isFavorite ? '★' : '☆'}
         </button>
       </div>
 
@@ -111,13 +111,13 @@ export default function LinkCard({ link }) {
           rel="noopener noreferrer"
           className="flex-1 px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-bold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200 text-center"
         >
-          🔗 Open
+          Open
         </a>
         <button
           onClick={handleDelete}
           className="px-4 py-3 bg-gradient-to-r from-red-50 to-pink-50 text-red-600 text-sm font-bold rounded-xl hover:from-red-100 hover:to-pink-100 hover:scale-105 transition-all duration-200"
         >
-          🗑️
+          Delete
         </button>
       </div>
     </div>

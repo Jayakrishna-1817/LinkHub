@@ -26,7 +26,7 @@ const folderSchema = new mongoose.Schema({
   },
   icon: {
     type: String,
-    default: '📁'
+    default: ''
   },
   description: {
     type: String,

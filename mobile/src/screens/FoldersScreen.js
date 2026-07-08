@@ -27,7 +27,7 @@ export default function FoldersScreen() {
     }
 
     try {
-      await folderAPI.create({ name: newFolderName, icon: '📁', color: '#3B82F6' });
+      await folderAPI.create({ name: newFolderName, icon: '', color: '#3B82F6' });
       setNewFolderName('');
       setShowAddModal(false);
       loadFolders();
@@ -75,7 +75,7 @@ export default function FoldersScreen() {
         style={styles.deleteButton}
         onPress={() => handleDeleteFolder(item._id)}
       >
-        <Text style={styles.deleteText}>🗑️</Text>
+        <Text style={styles.deleteText}>Delete</Text>
       </TouchableOpacity>
     </View>
   );

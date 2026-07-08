@@ -29,7 +29,6 @@ export default function AddLinkModal({ onClose }) {
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 animate-fadeIn">
       <div className="bg-white rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl transform animate-scaleIn">
         <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6 flex items-center gap-2">
-          <span className="text-3xl">🔗</span>
           Add New Link
         </h2>
 
@@ -49,7 +48,6 @@ export default function AddLinkModal({ onClose }) {
             />
             <div className="mt-3 p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
               <p className="text-sm text-gray-600 flex items-center gap-2">
-                <span className="text-xl">🤖</span>
                 <span className="font-semibold">Folders will be created automatically based on link content</span>
               </p>
             </div>
@@ -68,7 +66,7 @@ export default function AddLinkModal({ onClose }) {
               disabled={loading}
               className="flex-1 px-5 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:shadow-xl hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:scale-100 font-bold"
             >
-              {loading ? '⏳ Adding...' : '✨ Add Link'}
+              {loading ? 'Adding...' : 'Add Link'}
             </button>
           </div>
         </form>
