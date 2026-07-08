@@ -1,4 +1,4 @@
-import { Menu } from 'lucide-react';
+import { Bars3Icon } from '@heroicons/react/24/outline';
 
 export default function Header({ onAddLink, onMenuClick }) {
   return (
@@ -10,7 +10,7 @@ export default function Header({ onAddLink, onMenuClick }) {
           className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors touch-manipulation"
           aria-label="Open menu"
         >
-          <Menu size={24} className="text-gray-700" />
+          <Bars3Icon className="w-6 h-6 text-gray-700" />
         </button>
 
         <div className="flex-1 min-w-0">

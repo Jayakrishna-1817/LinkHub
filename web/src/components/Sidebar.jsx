@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useAuthStore } from '../store/authStore';
 import { useLinkStore } from '../store/linkStore';
 import Logo from './Logo';
-import { X } from 'lucide-react';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 
 import { folderAPI } from '../services/api';
 
@@ -63,7 +63,7 @@ export default function Sidebar({ folders, onAddFolder, onFolderDeleted, isMobil
           className="lg:hidden absolute top-4 right-4 p-2 rounded-lg hover:bg-slate-700/50 transition-colors z-10"
           aria-label="Close menu"
         >
-          <X size={24} className="text-white" />
+          <XMarkIcon className="w-6 h-6 text-white" />
         </button>
 
         <div className="p-6 border-b border-slate-700/50 backdrop-blur-sm">
