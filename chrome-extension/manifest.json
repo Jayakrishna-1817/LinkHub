@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Smart Bookmark Organizer",
+  "version": "1.0.0",
+  "description": "Automatically organize bookmarks into hierarchical folders using AI-powered categorization",
+  "permissions": [
+    "bookmarks",
+    "tabs",
+    "storage",
+    "activeTab",
+    "notifications"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Smart Bookmark - Click to auto-bookmark this page",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "options_page": "options.html",
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+D",
+        "mac": "Command+Shift+D"
+      },
+      "description": "Auto-bookmark current page"
+    }
+  }
+}

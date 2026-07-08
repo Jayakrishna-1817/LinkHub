@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Smart Bookmark Organizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-links {
+            display: grid;
+            gap: 15px;
+        }
+        .test-link {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .test-link strong {
+            font-size: 16px;
+        }
+        .test-link small {
+            display: block;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        .instructions {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .instructions ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin: 8px 0;
+        }
+        .status {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Test Smart Bookmark Organizer</h1>
+        
+        <div class="instructions">
+            <h3>📋 Testing Instructions:</h3>
+            <ol>
+                <li>Make sure the extension is enabled at <strong>chrome://extensions/</strong></li>
+                <li>Click the bookmark star (⭐) in your browser's address bar for this page</li>
+                <li>Open the extension popup to see statistics</li>
+                <li>Check your bookmarks folder - should see organized folders</li>
+                <li>Try bookmarking the test links below</li>
+            </ol>
+        </div>
+
+        <h3>🔗 Test Links to Bookmark:</h3>
+        <div class="test-links">
+            <div class="test-link">
+                <div>
+                    <strong>ChatGPT</strong>
+                    <small>Should go to: Technology → ChatGPT</small>
+                </div>
+                <a href="https://chat.openai.com" target="_blank" style="color: white; text-decoration: none;">Visit →</a>
+            </div>
+
+            <div class="test-link">
+                <div>
+                    <strong>GitHub</strong>
+                    <small>Should go to: Technology → GitHub</small>
+                </div>
+                <a href="https://github.com" target="_blank" style="color: white; text-decoration: none;">Visit →</a>
+            </div>
+
+            <div class="test-link">
+                <div>
+                    <strong>Instagram</strong>
+                    <small>Should go to: Social Media → Instagram</small>
+                </div>
+                <a href="https://instagram.com" target="_blank" style="color: white; text-decoration: none;">Visit →</a>
+            </div>
+
+            <div class="test-link">
+                <div>
+                    <strong>YouTube</strong>
+                    <small>Should go to: Entertainment → YouTube</small>
+                </div>
+                <a href="https://youtube.com" target="_blank" style="color: white; text-decoration: none;">Visit →</a>
+            </div>
+
+            <div class="test-link">
+                <div>
+                    <strong>Amazon</strong>
+                    <small>Should go to: Shopping → Amazon</small>
+                </div>
+                <a href="https://amazon.com" target="_blank" style="color: white; text-decoration: none;">Visit →</a>
+            </div>
+
+            <div class="test-link">
+                <div>
+                    <strong>Wellfound (AngelList)</strong>
+                    <small>Should go to: Career → Job Search</small>
+                </div>
+                <a href="https://wellfound.com" target="_blank" style="color: white; text-decoration: none;">Visit →</a>
+            </div>
+        </div>
+
+        <div class="status">
+            <h3>🐛 Debugging Steps:</h3>
+            <p>If bookmarks are not organizing:</p>
+            <ol style="text-align: left;">
+                <li>Open <strong>chrome://extensions/</strong></li>
+                <li>Click "Details" on Smart Bookmark Organizer</li>
+                <li>Click "Inspect views: service worker" to see console logs</li>
+                <li>Look for errors or "Auto-organize is disabled" message</li>
+                <li>Make sure toggle is ON in extension popup</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // Add this page to test
+        console.log('Test page loaded. You can bookmark this page to test the extension!');
+    </script>
+</body>
+</html>

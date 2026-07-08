@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - Smart Bookmark Organizer</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔖 Smart Bookmark Organizer</h1>
+      <p>Configure how your bookmarks are automatically organized</p>
+    </header>
+
+    <main>
+      <section class="settings-section">
+        <h2>⚙️ General Settings</h2>
+        
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="autoOrganize">Auto-organize new bookmarks</label>
+            <p class="description">Automatically categorize and organize bookmarks as you create them</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="autoOrganize" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="notifyUser">Show notifications</label>
+            <p class="description">Display a notification when a bookmark is organized</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="notifyUser" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="usePageContent">Use page content for classification</label>
+            <p class="description">Analyze page content for more accurate categorization (may be slower)</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="usePageContent">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </section>
+
+      <section class="settings-section">
+        <h2>📂 Folder Settings</h2>
+        
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="organizationMode">Organization Mode</label>
+            <p class="description">Choose how bookmarks should be organized</p>
+          </div>
+          <select id="organizationMode" class="select-input">
+            <option value="hierarchical">Hierarchical (Main → Sub folders)</option>
+            <option value="flat">Flat (Single category folder)</option>
+            <option value="source-based">Source-based (e.g., YouTube, GitHub)</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="defaultLocation">Default bookmark location</label>
+            <p class="description">Where to create organized folders</p>
+          </div>
+          <select id="defaultLocation" class="select-input">
+            <option value="bookmarks-bar">Bookmarks Bar</option>
+            <option value="other-bookmarks">Other Bookmarks</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="settings-section">
+        <h2>🎯 Categories</h2>
+        <p class="section-description">Enable or disable specific categories for classification</p>
+        
+        <div class="categories-grid" id="categoriesGrid">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <section class="settings-section">
+        <h2>📊 Statistics</h2>
+        <div class="stats-display">
+          <div class="stat-box">
+            <div class="stat-value" id="totalOrganized">0</div>
+            <div class="stat-label">Bookmarks Organized</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="categoriesUsed">0</div>
+            <div class="stat-label">Categories Used</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="foldersCreated">0</div>
+            <div class="stat-label">Folders Created</div>
+          </div>
+        </div>
+        <button id="resetStats" class="btn btn-danger">Reset Statistics</button>
+      </section>
+
+      <section class="settings-section">
+        <h2>🔧 Actions</h2>
+        
+        <div class="actions-grid">
+          <button id="organizeAll" class="btn btn-primary">
+            📁 Organize All Existing Bookmarks
+          </button>
+          <button id="exportSettings" class="btn btn-secondary">
+            💾 Export Settings
+          </button>
+          <button id="importSettings" class="btn btn-secondary">
+            📥 Import Settings
+          </button>
+          <button id="resetSettings" class="btn btn-warning">
+            🔄 Reset to Defaults
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Smart Bookmark Organizer v1.0.0 • Powered by LinkHub AI</p>
+      <div id="saveStatus" class="save-status hidden"></div>
+    </footer>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

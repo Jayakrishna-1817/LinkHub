@@ -81,7 +81,8 @@ const sourceKeywords = {
   'CodePen': ['codepen'],
   'Dev.to': ['dev.to'],
   'Reddit': ['reddit'],
-  'Twitter': ['twitter', 'x.com']
+  'Twitter': ['twitter', 'x.com'],
+  'WhatsApp': ['whatsapp', 'web.whatsapp.com', 'whatsapp.com']
 };
 
 // Calculate similarity score between text and category
@@ -231,6 +232,7 @@ function detectSource(url, title, description) {
   if (urlLower.includes('dev.to')) return 'Dev.to';
   if (urlLower.includes('reddit.com')) return 'Reddit';
   if (urlLower.includes('twitter.com') || urlLower.includes('x.com')) return 'Twitter';
+  if (urlLower.includes('whatsapp.com') || urlLower.includes('web.whatsapp.com')) return 'WhatsApp';
   
   // Then check keywords in content
   for (const [source, keywords] of Object.entries(sourceKeywords)) {
@@ -290,6 +292,12 @@ function suggestHierarchicalFolder(url, title, description, existingSource) {
   };
 }
 
+// Suggest folder name based on content analysis
+function suggestFolderName(title, description, source) {
+  const prediction = predictCategory(title, description);
+  return prediction.predictedCategory;
+}
+
 // Find or suggest the best matching folder from existing folders
 async function findBestFolder(folders, title, description, tags, source) {
   if (folders.length === 0) {
@@ -330,6 +338,7 @@ module.exports = {
   detectSource,
   suggestHierarchicalFolder,
   findBestFolder,
+  suggestFolderName,
   categoryKeywords,
   sourceKeywords
 };

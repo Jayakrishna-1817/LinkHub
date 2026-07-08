@@ -9,6 +9,7 @@ import Header from '../components/Header';
 import LinkGrid from '../components/LinkGrid';
 import AddLinkModal from '../components/AddLinkModal';
 import AddFolderModal from '../components/AddFolderModal';
+import LoadingSkeleton from '../components/LoadingSkeleton';
 
 export default function Dashboard() {
   const { user } = useAuthStore();
@@ -25,10 +26,17 @@ export default function Dashboard() {
 
   const loadData = async () => {
     try {
+      // Show optimistic loading message
+      const loadingToast = toast.loading('Waking up server... ⏱️');
+      
       const [foldersRes, linksRes] = await Promise.all([
         folderAPI.getAll(),
         linkAPI.getAll()
       ]);
+      
+      toast.dismiss(loadingToast);
+      toast.success('✅ Data loaded!');
+      
       setFolders(foldersRes.data);
       setLinks(linksRes.data);
     } catch (error) {

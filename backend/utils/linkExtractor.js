@@ -28,6 +28,8 @@ async function extractLinkMetadata(url) {
       metadata.source = 'stackoverflow';
     } else if (url.includes('reddit.com')) {
       metadata.source = 'reddit';
+    } else if (url.includes('whatsapp.com') || url.includes('web.whatsapp.com')) {
+      metadata.source = 'whatsapp';
     }
 
     // Generic metadata extraction

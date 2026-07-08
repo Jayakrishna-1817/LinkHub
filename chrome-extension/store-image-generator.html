@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chrome Web Store Image Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    h1 { color: #333; text-align: center; }
+    h2 { color: #667eea; margin-top: 30px; }
+    .preview {
+      margin: 20px 0;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .info {
+      background: #f9fafb;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 10px 0;
+      font-size: 14px;
+    }
+    button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px 10px 10px 0;
+      font-weight: bold;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+    .button-group {
+      margin: 20px 0;
+    }
+    .section {
+      margin: 40px 0;
+      padding: 20px;
+      border-left: 4px solid #667eea;
+      background: #f9fafb;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎨 Chrome Web Store Promotional Images</h1>
+    <p style="text-align: center; color: #666;">Generate all required images for publishing your extension</p>
+
+    <!-- Small Promo Tile -->
+    <div class="section">
+      <h2>1. Small Promotional Tile (440x280)</h2>
+      <div class="info">
+        <strong>Required:</strong> Yes<br>
+        <strong>Where shown:</strong> Extension listing thumbnail<br>
+        <strong>Size:</strong> 440x280 pixels
+      </div>
+      <div class="preview">
+        <canvas id="smallPromo" width="440" height="280"></canvas>
+      </div>
+      <div class="button-group">
+        <button onclick="downloadImage('smallPromo', 'small-promo-440x280.png')">📥 Download Small Promo</button>
+        <button onclick="generateSmallPromo()">🔄 Regenerate</button>
+      </div>
+    </div>
+
+    <!-- Screenshot -->
+    <div class="section">
+      <h2>2. Screenshot (1280x800)</h2>
+      <div class="info">
+        <strong>Required:</strong> Yes (minimum 1)<br>
+        <strong>Where shown:</strong> Extension screenshots gallery<br>
+        <strong>Size:</strong> 1280x800 or 640x400 pixels<br>
+        <strong>Note:</strong> Take actual screenshots of your extension in use
+      </div>
+      <div class="preview">
+        <canvas id="screenshot" width="1280" height="800"></canvas>
+      </div>
+      <div class="button-group">
+        <button onclick="downloadImage('screenshot', 'screenshot-1280x800.png')">📥 Download Screenshot Template</button>
+      </div>
+      <div class="info" style="background: #fff3cd; border-left: 4px solid #ffc107;">
+        <strong>⚠️ Important:</strong> This is a template. For best results, take actual screenshots of your extension:
+        <ol style="margin: 10px 0 0 20px;">
+          <li>Open Chrome with extension installed</li>
+          <li>Click extension icon to show popup</li>
+          <li>Press Ctrl+Shift+I, select "Take screenshot" (or use Snipping Tool)</li>
+          <li>Crop to 1280x800 or 640x400</li>
+          <li>Save as PNG</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Large Promo Tile -->
+    <div class="section">
+      <h2>3. Large Promotional Tile (920x680) - Optional</h2>
+      <div class="info">
+        <strong>Required:</strong> No (but recommended)<br>
+        <strong>Where shown:</strong> Featured sections, discovery<br>
+        <strong>Size:</strong> 920x680 pixels
+      </div>
+      <div class="preview">
+        <canvas id="largePromo" width="920" height="680"></canvas>
+      </div>
+      <div class="button-group">
+        <button onclick="downloadImage('largePromo', 'large-promo-920x680.png')">📥 Download Large Promo</button>
+        <button onclick="generateLargePromo()">🔄 Regenerate</button>
+      </div>
+    </div>
+
+    <!-- Marquee -->
+    <div class="section">
+      <h2>4. Marquee Banner (1400x560) - Optional</h2>
+      <div class="info">
+        <strong>Required:</strong> No<br>
+        <strong>Where shown:</strong> Featured in Chrome Web Store homepage<br>
+        <strong>Size:</strong> 1400x560 pixels
+      </div>
+      <div class="preview">
+        <canvas id="marquee" width="1400" height="560"></canvas>
+      </div>
+      <div class="button-group">
+        <button onclick="downloadImage('marquee', 'marquee-1400x560.png')">📥 Download Marquee</button>
+        <button onclick="generateMarquee()">🔄 Regenerate</button>
+      </div>
+    </div>
+
+    <div class="section" style="background: #d1fae5; border-left-color: #10b981;">
+      <h2>✅ Next Steps</h2>
+      <ol>
+        <li>Download all images above</li>
+        <li>Take 3-5 real screenshots of your extension</li>
+        <li>Go to <a href="https://chrome.google.com/webstore/devconsole/" target="_blank">Chrome Web Store Developer Console</a></li>
+        <li>Click "New Item" and upload your extension ZIP</li>
+        <li>Upload these promotional images</li>
+        <li>Fill in the description (see PUBLISH_GUIDE.md)</li>
+        <li>Submit for review!</li>
+      </ol>
+    </div>
+  </div>
+
+  <script>
+    // Generate Small Promo Tile
+    function generateSmallPromo() {
+      const canvas = document.getElementById('smallPromo');
+      const ctx = canvas.getContext('2d');
+      
+      // Background gradient
+      const gradient = ctx.createLinearGradient(0, 0, 440, 280);
+      gradient.addColorStop(0, '#667eea');
+      gradient.addColorStop(1, '#764ba2');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 440, 280);
+      
+      // Icon
+      ctx.font = 'bold 80px Arial';
+      ctx.fillStyle = 'white';
+      ctx.textAlign = 'center';
+      ctx.fillText('🔖', 220, 100);
+      
+      // Title
+      ctx.font = 'bold 32px Arial';
+      ctx.fillText('Smart Bookmark', 220, 160);
+      ctx.fillText('Organizer', 220, 195);
+      
+      // Subtitle
+      ctx.font = '16px Arial';
+      ctx.fillStyle = 'rgba(255,255,255,0.9)';
+      ctx.fillText('AI-Powered Auto-Organization', 220, 230);
+      
+      // Features
+      ctx.font = 'bold 14px Arial';
+      ctx.fillText('50+ Categories • Real-Time • Privacy First', 220, 260);
+    }
+
+    // Generate Large Promo Tile
+    function generateLargePromo() {
+      const canvas = document.getElementById('largePromo');
+      const ctx = canvas.getContext('2d');
+      
+      // Background gradient
+      const gradient = ctx.createLinearGradient(0, 0, 920, 680);
+      gradient.addColorStop(0, '#667eea');
+      gradient.addColorStop(1, '#764ba2');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 920, 680);
+      
+      // Icon
+      ctx.font = 'bold 120px Arial';
+      ctx.fillStyle = 'white';
+      ctx.textAlign = 'center';
+      ctx.fillText('🔖', 460, 180);
+      
+      // Title
+      ctx.font = 'bold 48px Arial';
+      ctx.fillText('Smart Bookmark Organizer', 460, 280);
+      
+      // Subtitle
+      ctx.font = '28px Arial';
+      ctx.fillStyle = 'rgba(255,255,255,0.95)';
+      ctx.fillText('Never Lose a Bookmark Again!', 460, 330);
+      
+      // Features
+      ctx.font = 'bold 20px Arial';
+      ctx.fillStyle = 'rgba(255,255,255,0.9)';
+      ctx.fillText('✨ AI-Powered Classification', 460, 410);
+      ctx.fillText('📂 50+ Smart Categories', 460, 445);
+      ctx.fillText('⚡ Instant Organization', 460, 480);
+      ctx.fillText('🔒 Privacy First - All Local', 460, 515);
+      
+      // CTA
+      ctx.font = 'bold 24px Arial';
+      ctx.fillStyle = 'white';
+      ctx.fillRect(340, 560, 240, 60);
+      ctx.fillStyle = '#667eea';
+      ctx.fillText('Install Now', 460, 600);
+    }
+
+    // Generate Screenshot Template
+    function generateScreenshotTemplate() {
+      const canvas = document.getElementById('screenshot');
+      const ctx = canvas.getContext('2d');
+      
+      // Background
+      ctx.fillStyle = '#f0f0f0';
+      ctx.fillRect(0, 0, 1280, 800);
+      
+      // Browser chrome
+      ctx.fillStyle = '#e0e0e0';
+      ctx.fillRect(0, 0, 1280, 40);
+      
+      // Extension popup mockup
+      ctx.fillStyle = 'white';
+      ctx.fillRect(900, 50, 350, 500);
+      ctx.strokeStyle = '#ddd';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(900, 50, 350, 500);
+      
+      // Popup header
+      const gradient = ctx.createLinearGradient(900, 50, 900, 150);
+      gradient.addColorStop(0, '#667eea');
+      gradient.addColorStop(1, '#764ba2');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(900, 50, 350, 100);
+      
+      // Icon in popup
+      ctx.font = 'bold 40px Arial';
+      ctx.fillStyle = 'white';
+      ctx.textAlign = 'center';
+      ctx.fillText('🔖', 1075, 110);
+      ctx.font = 'bold 24px Arial';
+      ctx.fillText('Smart Bookmarks', 1075, 140);
+      
+      // Stats mockup
+      ctx.fillStyle = '#333';
+      ctx.font = 'bold 16px Arial';
+      ctx.textAlign = 'left';
+      ctx.fillText('Statistics', 920, 180);
+      
+      ctx.fillStyle = '#f9fafb';
+      ctx.fillRect(920, 195, 310, 60);
+      ctx.fillStyle = '#667eea';
+      ctx.font = 'bold 32px Arial';
+      ctx.fillText('127', 970, 230);
+      ctx.fillStyle = '#666';
+      ctx.font = '14px Arial';
+      ctx.fillText('Bookmarks Organized', 1050, 230);
+      
+      // Bookmarks sidebar mockup
+      ctx.fillStyle = '#2d3748';
+      ctx.fillRect(50, 100, 250, 650);
+      
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 18px Arial';
+      ctx.textAlign = 'left';
+      ctx.fillText('📱 Social Media', 70, 140);
+      ctx.fillText('💻 Technology', 70, 180);
+      ctx.fillText('🎬 Entertainment', 70, 220);
+      ctx.fillText('🛒 Shopping', 70, 260);
+      
+      // Instruction text
+      ctx.fillStyle = '#667eea';
+      ctx.font = 'bold 24px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText('Take actual screenshots of your extension for best results!', 640, 700);
+      ctx.font = '18px Arial';
+      ctx.fillStyle = '#666';
+      ctx.fillText('This is just a template to show the recommended size', 640, 730);
+    }
+
+    // Generate Marquee
+    function generateMarquee() {
+      const canvas = document.getElementById('marquee');
+      const ctx = canvas.getContext('2d');
+      
+      // Background gradient
+      const gradient = ctx.createLinearGradient(0, 0, 1400, 560);
+      gradient.addColorStop(0, '#667eea');
+      gradient.addColorStop(0.5, '#764ba2');
+      gradient.addColorStop(1, '#667eea');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 1400, 560);
+      
+      // Left side - Text
+      ctx.fillStyle = 'white';
+      ctx.textAlign = 'left';
+      
+      ctx.font = 'bold 64px Arial';
+      ctx.fillText('🔖 Never Lose', 80, 150);
+      ctx.fillText('a Bookmark Again!', 80, 230);
+      
+      ctx.font = '32px Arial';
+      ctx.fillStyle = 'rgba(255,255,255,0.95)';
+      ctx.fillText('AI-powered automatic organization', 80, 300);
+      ctx.fillText('50+ smart categories • Real-time • Privacy first', 80, 350);
+      
+      ctx.font = 'bold 28px Arial';
+      ctx.fillStyle = 'white';
+      ctx.fillRect(80, 400, 300, 70);
+      ctx.fillStyle = '#667eea';
+      ctx.textAlign = 'center';
+      ctx.fillText('Install Free Extension', 230, 445);
+      
+      // Right side - Visual
+      ctx.fillStyle = 'rgba(255,255,255,0.2)';
+      ctx.fillRect(850, 80, 450, 400);
+      
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 24px Arial';
+      ctx.textAlign = 'left';
+      ctx.fillText('Before: Chaos', 900, 130);
+      ctx.font = '18px Arial';
+      ctx.fillText('🔗 Link 1', 900, 165);
+      ctx.fillText('🔗 Link 2', 900, 195);
+      ctx.fillText('🔗 Link 3', 900, 225);
+      ctx.fillText('🔗 ... 150+ links', 900, 255);
+      
+      ctx.font = 'bold 24px Arial';
+      ctx.fillText('After: Organized ✨', 900, 320);
+      ctx.font = '18px Arial';
+      ctx.fillText('📱 Social Media', 900, 355);
+      ctx.fillText('💻 Technology', 900, 385);
+      ctx.fillText('🎬 Entertainment', 900, 415);
+      ctx.fillText('🛒 Shopping', 900, 445);
+    }
+
+    // Download image
+    function downloadImage(canvasId, filename) {
+      const canvas = document.getElementById(canvasId);
+      canvas.toBlob(blob => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+    }
+
+    // Generate all on load
+    window.onload = function() {
+      generateSmallPromo();
+      generateLargePromo();
+      generateScreenshotTemplate();
+      generateMarquee();
+    };
+  </script>
+</body>
+</html>

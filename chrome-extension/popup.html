@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Bookmark Organizer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">
+        <span class="icon">🔖</span>
+        <h1>Smart Bookmark Organizer</h1>
+      </div>
+      <div class="subtitle">AI-Powered Auto-Organization</div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-section">
+      <h2>Statistics</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number" id="totalOrganized">0</div>
+          <div class="stat-label">Total Organized</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="categoriesUsed">0</div>
+          <div class="stat-label">Categories</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Categories -->
+    <div class="categories-section">
+      <h2>Top Categories</h2>
+      <div id="topCategories" class="categories-list">
+        <div class="empty-state">No bookmarks organized yet</div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions-section">
+      <button id="organizeExisting" class="btn btn-primary">
+        <span>📁</span>
+        Organize All Existing Bookmarks
+      </button>
+      <button id="openOptions" class="btn btn-secondary">
+        <span>⚙️</span>
+        Settings
+      </button>
+    </div>
+
+    <!-- Status -->
+    <div id="status" class="status hidden"></div>
+
+    <!-- Quick Settings Toggle -->
+    <div class="quick-settings">
+      <label class="toggle-switch">
+        <input type="checkbox" id="autoOrganizeToggle" checked>
+        <span class="slider"></span>
+        <span class="label">Auto-organize new bookmarks</span>
+      </label>
+      <label class="toggle-switch">
+        <input type="checkbox" id="notifyToggle" checked>
+        <span class="slider"></span>
+        <span class="label">Show notifications</span>
+      </label>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>Powered by LinkHub AI</p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

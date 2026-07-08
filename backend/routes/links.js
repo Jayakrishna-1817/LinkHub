@@ -45,8 +45,8 @@ function getIconForSource(source) {
     'ChatGPT': '💬', 'YouTube': '🎥', 'GitHub': '💻', 'Medium': '📝',
     'Stack Overflow': '💡', 'GeeksforGeeks': '🤓', 'W3Schools': '📘',
     'MDN': '🦖', 'LeetCode': '🧩', 'HackerRank': '👨‍💻', 'CodePen': '✏️',
-    'Dev.to': '📰', 'Reddit': '🔴', 'Twitter': '🐦', 'Onlinegdb': '⚙️',
-    'Online': '🌐', 'Compiler': '⚙️', 'Other': '🔗'
+    'Dev.to': '📰', 'Reddit': '🔴', 'Twitter': '🐦', 'WhatsApp': '💬',
+    'Onlinegdb': '⚙️', 'Online': '🌐', 'Compiler': '⚙️', 'Other': '🔗'
   };
   return iconMap[source] || '🔗';
 }
@@ -57,8 +57,8 @@ function getColorForSource(source) {
     'Medium': '#00AB6C', 'Stack Overflow': '#F48024', 'GeeksforGeeks': '#2F8D46',
     'W3Schools': '#04AA6D', 'MDN': '#83D0F2', 'LeetCode': '#FFA116',
     'HackerRank': '#00EA64', 'CodePen': '#000000', 'Dev.to': '#0A0A0A',
-    'Reddit': '#FF4500', 'Twitter': '#1DA1F2', 'Onlinegdb': '#3B82F6',
-    'Online': '#3B82F6', 'Compiler': '#3B82F6', 'Other': '#6B7280'
+    'Reddit': '#FF4500', 'Twitter': '#1DA1F2', 'WhatsApp': '#25D366',
+    'Onlinegdb': '#3B82F6', 'Online': '#3B82F6', 'Compiler': '#3B82F6', 'Other': '#6B7280'
   };
   return colorMap[source] || '#6B7280';
 }
