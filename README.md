@@ -1,4 +1,4 @@
-# LinkHub - Smart Link Organization Platform 🔗✨
+# LinkHub - Smart Link Organization Platform
 
 <div align="center">
 
@@ -6,7 +6,7 @@
 [![Live Demo](https://img.shields.io/badge/Live-Demo-success?style=for-the-badge)](https://link-hub-kappa-nine.vercel.app)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/Jayakrishna-1817/LinkHub)
 
-**Never lose a link again! Intelligent organization powered by AI 🤖**
+**Never lose a link again! Intelligent organization powered by AI**
 
 [Features](#-features) • [Demo](#-live-demo) • [Tech Stack](#-tech-stack) • [Setup](#-quick-start) • [API](#-api-documentation)
 
@@ -14,40 +14,40 @@
 
 ---
 
-## 📖 Overview
+## Overview
 
 LinkHub is a modern, full-stack link management platform that automatically organizes your bookmarks using machine learning. Simply paste a URL and watch as our AI intelligently categorizes it into hierarchical folders, extracts metadata, and syncs across all your devices in real-time.
 
-### 🎯 Perfect For
-- 📚 Students organizing learning resources
-- 👨‍💻 Developers managing documentation and tutorials
-- 📰 Researchers collecting articles and papers
-- 🎬 Content curators saving videos and posts
-- 💼 Professionals organizing work resources
+### Perfect For
+- Students organizing learning resources
+- Developers managing documentation and tutorials
+- Researchers collecting articles and papers
+- Content curators saving videos and posts
+- Professionals organizing work resources
 
-## ✨ Features
+## Features
 
-### 🤖 AI-Powered Intelligence
+### AI-Powered Intelligence
 - **Smart Categorization**: 50+ categories including Technology, Entertainment, Lifestyle, Business, and more
 - **Metadata Extraction**: Automatically pulls titles, descriptions, thumbnails from URLs
 - **YouTube Integration**: Special oEmbed API integration for reliable video metadata
 - **Framework Detection**: Prioritizes specific frameworks (React, Python, etc.) over generic languages
 - **Keyword Analysis**: Advanced NLP using Natural.js for content understanding
 
-### 📁 Intelligent Organization
+### Intelligent Organization
 - **Hierarchical Structure**: Main folders (source) → Sub-folders (content topic)
 - **Auto-Folder Creation**: Automatically creates and organizes folders based on content
 - **Collapsible Sidebar**: Clean, expandable folder navigation
 - **Visual Indicators**: Icons and colors for each category
 - **Link Count**: See how many links in each folder at a glance
 
-### ⚡ Real-Time Synchronization
+### Real-Time Synchronization
 - **Socket.IO Integration**: Instant updates across all connected devices
 - **Live Collaboration**: Multiple users can work simultaneously
 - **Automatic Refresh**: No manual page reload needed
 - **Event Broadcasting**: CRUD operations broadcast in real-time
 
-### 🎨 Modern User Experience
+### Modern User Experience
 - **Responsive Design**: Mobile-first approach with drawer sidebar
 - **Touch-Friendly**: Optimized tap targets for mobile devices
 - **Gradient Animations**: Beautiful gradients and smooth transitions
@@ -55,23 +55,23 @@ LinkHub is a modern, full-stack link management platform that automatically orga
 - **Dark Sidebar**: Elegant dark theme with gradient accents
 - **Loading States**: Smooth loading indicators and skeletons
 
-### 🔐 Security & Authentication
+### Security & Authentication
 - **JWT Tokens**: Secure token-based authentication
 - **Password Encryption**: bcryptjs hashing with salt rounds
 - **7-Day Sessions**: Long-lasting but secure sessions
 - **Protected Routes**: API endpoint protection
 - **User Isolation**: Each user's data is completely private
 
-### 📱 Cross-Platform Support
+### Cross-Platform Support
 - **Web Application**: React + Vite with modern UI
 - **Mobile App**: React Native (Expo) - ready for iOS & Android
 - **PWA Ready**: Can be installed as a progressive web app
 - **Responsive Layouts**: Adapts to any screen size
 
-## 🚀 Live Demo
+## Live Demo
 
-**🌐 Web App**: [link-hub-kappa-nine.vercel.app](https://link-hub-kappa-nine.vercel.app)  
-**🔙 Backend**: [linkhub-7del.onrender.com](https://linkhub-7del.onrender.com) (API)
+**Web App**: [link-hub-kappa-nine.vercel.app](https://link-hub-kappa-nine.vercel.app)  
+**Backend**: [linkhub-7del.onrender.com](https://linkhub-7del.onrender.com) (API)
 
 ### Demo Credentials
 ```
@@ -80,18 +80,18 @@ Password: demo123
 ```
 *Note: Backend on Render free tier may sleep - first load takes 30-60s*
 
-## 🎬 How It Works
+## How It Works
 
-1. **🔐 Sign Up/Login**: Create your account or use demo credentials
-2. **➕ Add Link**: Click "Add Link" and paste any URL
-3. **🤖 AI Magic**: 
+1. **Sign Up/Login**: Create your account or use demo credentials
+2. **Add Link**: Click "Add Link" and paste any URL
+3. **AI Magic**: 
    - Extracts title, description, thumbnail
    - Detects source (YouTube, GitHub, Medium, etc.)
    - Identifies content category (React, DSA, Interview, etc.)
    - Creates hierarchical folders automatically
-4. **📂 Browse**: Navigate through auto-organized folders
-5. **⚡ Real-Time**: Changes sync instantly across devices
-6. **⭐ Favorite**: Star important links for quick access
+4. **Browse**: Navigate through auto-organized folders
+5. **Real-Time**: Changes sync instantly across devices
+6. **Favorite**: Star important links for quick access
 
 ### Example URL → Categorization
 
@@ -102,53 +102,53 @@ Password: demo123
 | `medium.com/python-tips` | Medium | Python |
 | `youtube.com/watch?v=dsa-course` | YouTube | Data Structures |
 
-## 🚀 Quick Deploy
+## Quick Deploy
 
-**Total Cost: $0** 🎉 (Using free tiers)
+**Total Cost: $0** (Using free tiers)
 
 | Service | Purpose | Free Tier |
 |---------|---------|-----------|
-| **Render** | Backend API | ✅ 750 hrs/month |
-| **Vercel** | Frontend hosting | ✅ Unlimited |
-| **MongoDB Atlas** | Database | ✅ 512MB storage |
-| **Expo** | Mobile testing | ✅ Unlimited |
+| **Render** | Backend API | 750 hrs/month |
+| **Vercel** | Frontend hosting | Unlimited |
+| **MongoDB Atlas** | Database | 512MB storage |
+| **Expo** | Mobile testing | Unlimited |
 
 ### One-Click Deploy
 
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Jayakrishna-1817/LinkHub)
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Backend
 ```
-📦 Runtime:        Node.js v20.x
-🚀 Framework:      Express.js v4.18.2
-🗄️ Database:       MongoDB (Mongoose ODM)
-🔄 Real-Time:      Socket.IO v4.6.0
-🔐 Auth:           JWT + bcryptjs
-🧠 ML/NLP:         Natural.js v6.10.0
-🌐 Web Scraping:   Axios + Cheerio
-📊 Metadata:       YouTube oEmbed API
+Runtime:        Node.js v20.x
+Framework:      Express.js v4.18.2
+Database:       MongoDB (Mongoose ODM)
+Real-Time:      Socket.IO v4.6.0
+Auth:           JWT + bcryptjs
+ML/NLP:         Natural.js v6.10.0
+Web Scraping:   Axios + Cheerio
+Metadata:       YouTube oEmbed API
 ```
 
 ### Web Frontend
 ```
-⚛️ Framework:      React 18.2.0
-⚡ Build Tool:     Vite v5.4.21
-🎨 Styling:        Tailwind CSS v3.3.6
-🏪 State:          Zustand v4.4.7
-🛣️ Routing:        React Router v6.20.1
-🔄 Real-Time:      Socket.IO Client
-🎉 UI/UX:          Lucide Icons, React Hot Toast
+Framework:      React 18.2.0
+Build Tool:     Vite v5.4.21
+Styling:        Tailwind CSS v3.3.6
+State:          Zustand v4.4.7
+Routing:        React Router v6.20.1
+Real-Time:      Socket.IO Client
+UI/UX:          Lucide Icons, React Hot Toast
 ```
 
 ### Mobile App
 ```
-📱 Framework:      React Native (Expo ~50.0.0)
-🛣️ Navigation:     React Navigation
-🔄 Real-Time:      Socket.IO Client
-🎨 UI:             Native Base / React Native Elements
+Framework:      React Native (Expo ~50.0.0)
+Navigation:     React Navigation
+Real-Time:      Socket.IO Client
+UI:             Native Base / React Native Elements
 ```
 
 ### ML Categories (50+)
@@ -172,15 +172,15 @@ Arts: Art & Design, DIY & Crafts
 Misc: Books, Automotive, Pets, Home & Garden
 ```
 
-## 💻 Quick Start
+## Quick Start
 
 ### Prerequisites
 
-- ✅ **Node.js** v18 or higher ([Download](https://nodejs.org/))
-- ✅ **MongoDB** ([Local](https://www.mongodb.com/try/download/community) or [Atlas](https://www.mongodb.com/cloud/atlas))
-- ✅ **Git** ([Download](https://git-scm.com/))
+- **Node.js** v18 or higher ([Download](https://nodejs.org/))
+- **MongoDB** ([Local](https://www.mongodb.com/try/download/community) or [Atlas](https://www.mongodb.com/cloud/atlas))
+- **Git** ([Download](https://git-scm.com/))
 
-### 📦 Installation
+### Installation
 
 #### 1️⃣ Clone Repository
 
@@ -204,7 +204,7 @@ NODE_ENV=development" > .env
 # Start backend server
 npm run dev
 ```
-✅ Backend running on `http://localhost:5000`
+Backend running on `http://localhost:5000`
 
 #### 3️⃣ Web Frontend Setup
 
@@ -219,7 +219,7 @@ VITE_SOCKET_URL=http://localhost:5000" > .env
 # Start development server
 npm run dev
 ```
-✅ Web app running on `http://localhost:5173`
+Web app running on `http://localhost:5173`
 
 #### 4️⃣ Mobile App Setup (Optional)
 
@@ -233,9 +233,9 @@ npm install
 # Start Expo development server
 npx expo start
 ```
-📱 Scan QR code with Expo Go app
+Scan QR code with Expo Go app
 
-### 🏃‍♂️ Running All Services
+### Running All Services
 
 ```bash
 # Terminal 1 - Backend
@@ -248,7 +248,7 @@ cd web && npm run dev
 cd mobile && npx expo start
 ```
 
-## 🗄️ Database Setup
+## Database Setup
 
 ### Option 1: MongoDB Atlas (Recommended - Free)
 
@@ -296,7 +296,7 @@ sudo systemctl start mongodb
 mongodb://localhost:27017/linkfind
 ```
 
-## 🎯 Core Architecture
+## Core Architecture
 
 ### Request Flow
 
@@ -308,7 +308,7 @@ graph LR
     C --> E[Socket.IO]
     E --> B
     C --> F[ML Classifier]
-   📡 API Documentation
+   API Documentation
 
 ### Authentication
 
@@ -358,7 +358,7 @@ Content-Type: application/json
 }
 
 Response:
-{🔄 Socket.IO Events
+{Socket.IO Events
 
 ### Client → Server
 
@@ -404,11 +404,11 @@ socket.on('folder:deleted', (folderId) => {
 
 // Connection Events
 socket.on('connect', () => {
-  console.log('🔌 Connected:', socket.id);
+  console.log('Connected:', socket.id);
 });
 
 socket.on('disconnect', () => {
-  console.log('🔌 Disconnected');
+  console.log('Disconnected');
 });
 ```
 
@@ -433,12 +433,12 @@ UI auto-refreshes without reload
   "folder": {
     "_id": "folder_id",
     "name": "YouTube",
-    "icon": "🎥"
+    "icon": "YT"
   },
   "subFolder": {
     "_id": "subfolder_id",
     "name": "React",
-    "icon": "⚛️",
+    "icon": "React",
     "parentId": "folder_id"
   },
   "message": "Link added to YouTube → React"
@@ -486,7 +486,7 @@ Response:
     {
       "_id": "folder_id",
       "name": "YouTube",
-      "icon": "🎥",
+      "icon": "YT",
       "color": "#FF0000",
       "parentId": null,
       "isSubFolder": false
@@ -494,7 +494,7 @@ Response:
     {
       "_id": "subfolder_id",
       "name": "React",
-      "icon": "⚛️",
+      "icon": "React",
       "color": "#61DAFB",
       "parentId": "folder_id",
       "isSubFolder": true
@@ -505,7 +505,7 @@ Response:
 
 #### Create Folder
 ```http
-POS🔧 Environment Configuration
+POSEnvironment Configuration
 
 ### Backend (`backend/.env`)
 ```env
@@ -529,7 +529,7 @@ CLIENT_URL=https://your-frontend-domain.com
 ### Web Frontend (`web/.env`)
 ```env
 # API Configuration
-VIT🚀 Production Deployment
+VITProduction Deployment
 
 ### Backend (Render)
 
@@ -580,7 +580,7 @@ eas build --platform ios
 expo publish
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 LinkHub/
@@ -631,7 +631,7 @@ LinkHub/
 └── README.md
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Backend won't start
 ```bash
@@ -666,9 +666,9 @@ brew services list  # macOS
 ### YouTube links not categorizing correctly
 - Backend uses YouTube oEmbed API (no rate limits)
 - Clear database and re-add link
-- Check Render logs for errors: `❌ YouTube extraction failed`
+- Check Render logs for errors: `YouTube extraction failed`
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Here's how:
 
@@ -685,17 +685,17 @@ We welcome contributions! Here's how:
 - Test all features before submitting
 - Update README if adding new features
 
-## 📝 License
+## License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Author
+## Author
 
 **Jayakrishna**
 - GitHub: [@Jayakrishna-1817](https://github.com/Jayakrishna-1817)
 - Repository: [LinkHub](https://github.com/Jayakrishna-1817/LinkHub)
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [Natural.js](https://github.com/NaturalNode/natural) - NLP and ML
 - [Socket.IO](https://socket.io/) - Real-time communication
@@ -704,14 +704,14 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - [Tailwind CSS](https://tailwindcss.com/) - Styling
 - [Expo](https://expo.dev/) - Mobile development
 
-## 📞 Support
+## Support
 
-- 🐛 **Bug Reports**: [Open an issue](https://github.com/Jayakrishna-1817/LinkHub/issues)
-- 💡 **Feature Requests**: [Open an issue](https://github.com/Jayakrishna-1817/LinkHub/issues)
-- 📧 **Email**: Create an issue for support
+- **Bug Reports**: [Open an issue](https://github.com/Jayakrishna-1817/LinkHub/issues)
+- **Feature Requests**: [Open an issue](https://github.com/Jayakrishna-1817/LinkHub/issues)
+- **Email**: Create an issue for support
 - ⭐ **Star this repo** if you find it helpful!
 
-## 📊 Stats
+## Stats
 
 ![GitHub stars](https://img.shields.io/github/stars/Jayakrishna-1817/LinkHub?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/Jayakrishna-1817/LinkHub?style=social)
@@ -722,7 +722,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 <div align="center">
 
-**Made with ❤️ and AI**
+**Made with love and AI**
 
 [⬆ Back to Top](#linkhub---smart-link-organization-platform-)
 

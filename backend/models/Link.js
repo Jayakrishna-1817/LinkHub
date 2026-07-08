@@ -19,8 +19,8 @@ const linkSchema = new mongoose.Schema({
   },
   source: {
     type: String,
-    enum: ['youtube', 'github', 'medium', 'twitter', 'stackoverflow', 'reddit', 'other'],
-    default: 'other'
+    enum: ['ChatGPT', 'YouTube', 'GitHub', 'Medium', 'Stack Overflow', 'GeeksforGeeks', 'W3Schools', 'MDN', 'LeetCode', 'HackerRank', 'CodePen', 'Dev.to', 'Reddit', 'Twitter', 'Online', 'Compiler', 'Other', 'youtube', 'github', 'medium', 'twitter', 'stackoverflow', 'reddit', 'other'],
+    default: 'Other'
   },
   tags: [{
     type: String,

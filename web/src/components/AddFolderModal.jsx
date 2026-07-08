@@ -3,12 +3,12 @@ import { folderAPI } from '../services/api';
 import { useLinkStore } from '../store/linkStore';
 import toast from 'react-hot-toast';
 
-const folderIcons = ['📁', '📚', '🎥', '💻', '🎨', '📝', '🔧', '🎯', '🚀', '⭐'];
+const folderIcons = ['Folder', 'Books', 'Video', 'Code', 'Art', 'Notes', 'Tools', 'Target', 'Rocket', 'Star'];
 const folderColors = ['#3B82F6', '#8B5CF6', '#10B981', '#EF4444', '#F59E0B', '#EC4899', '#06B6D4', '#6366F1'];
 
 export default function AddFolderModal({ onClose }) {
   const [name, setName] = useState('');
-  const [icon, setIcon] = useState('📁');
+  const [icon, setIcon] = useState('Folder');
   const [color, setColor] = useState('#3B82F6');
   const [loading, setLoading] = useState(false);
   const { addFolder } = useLinkStore();
@@ -34,7 +34,6 @@ export default function AddFolderModal({ onClose }) {
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 animate-fadeIn">
       <div className="bg-white rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl transform animate-scaleIn">
         <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-6 flex items-center gap-2">
-          <span className="text-3xl">📁</span>
           Create New Folder
         </h2>
 
@@ -105,7 +104,7 @@ export default function AddFolderModal({ onClose }) {
               disabled={loading}
               className="flex-1 px-5 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl hover:shadow-xl hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:scale-100 font-bold"
             >
-              {loading ? '⏳ Creating...' : '✨ Create'}
+              {loading ? 'Creating...' : 'Create'}
             </button>
           </div>
         </form>

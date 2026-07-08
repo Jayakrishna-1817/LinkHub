@@ -9,9 +9,10 @@ import Header from '../components/Header';
 import LinkGrid from '../components/LinkGrid';
 import AddLinkModal from '../components/AddLinkModal';
 import AddFolderModal from '../components/AddFolderModal';
+import LoadingSkeleton from '../components/LoadingSkeleton';
 
 export default function Dashboard() {
-  const { user } = useAuthStore();
+  const { user, isAuthenticated } = useAuthStore();
   const { links, folders, selectedFolder, setSelectedFolder, setLinks, setFolders, addLink, updateLink, deleteLink, addFolder, updateFolder, deleteFolder } = useLinkStore();
   const [showAddLink, setShowAddLink] = useState(false);
   const [showAddFolder, setShowAddFolder] = useState(false);
@@ -19,16 +20,25 @@ export default function Dashboard() {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   useEffect(() => {
-    loadData();
-    setupSocketListeners();
-  }, []);
+    if (isAuthenticated) {
+      loadData();
+      setupSocketListeners();
+    }
+  }, [isAuthenticated]);
 
   const loadData = async () => {
     try {
+      // Show optimistic loading message
+      const loadingToast = toast.loading('Waking up server... ⏱️');
+      
       const [foldersRes, linksRes] = await Promise.all([
         folderAPI.getAll(),
         linkAPI.getAll()
       ]);
+      
+      toast.dismiss(loadingToast);
+      toast.success('Data loaded!');
+      
       setFolders(foldersRes.data);
       setLinks(linksRes.data);
     } catch (error) {
@@ -121,7 +131,7 @@ export default function Dashboard() {
                         {subFolder.name}
                       </h3>
                       <p className="text-sm text-gray-500 font-semibold">
-                        📎 {links.filter(l => l.folderId?._id === subFolder._id).length} links
+                        {links.filter(l => l.folderId?._id === subFolder._id).length} links
                       </p>
                     </button>
                   ))}
@@ -140,7 +150,6 @@ export default function Dashboard() {
             // Show all main folders when nothing is selected
             <div className="animate-fadeIn">
               <h2 className="text-3xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-6 flex items-center gap-3">
-                <span className="text-4xl">📂</span>
                 All Folders
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -158,7 +167,7 @@ export default function Dashboard() {
                         {folder.name}
                       </h3>
                       <p className="text-sm text-gray-500 font-semibold">
-                        📁 {folders.filter(sub => sub.parentId === folder._id).length} sub-folders
+                        {folders.filter(sub => sub.parentId === folder._id).length} sub-folders
                       </p>
                     </button>
                   ))}

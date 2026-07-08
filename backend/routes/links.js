@@ -42,13 +42,13 @@ router.get('/', authMiddleware, async (req, res) => {
 // Helper functions for folder icons and colors
 function getIconForSource(source) {
   const iconMap = {
-    'ChatGPT': '💬', 'YouTube': '🎥', 'GitHub': '💻', 'Medium': '📝',
-    'Stack Overflow': '💡', 'GeeksforGeeks': '🤓', 'W3Schools': '📘',
-    'MDN': '🦖', 'LeetCode': '🧩', 'HackerRank': '👨‍💻', 'CodePen': '✏️',
-    'Dev.to': '📰', 'Reddit': '🔴', 'Twitter': '🐦', 'Onlinegdb': '⚙️',
-    'Online': '🌐', 'Compiler': '⚙️', 'Other': '🔗'
+    'ChatGPT': 'Chat', 'YouTube': 'YT', 'GitHub': 'GH', 'Medium': 'MD',
+    'Stack Overflow': 'SO', 'GeeksforGeeks': 'GFG', 'W3Schools': 'W3S',
+    'MDN': 'MDN', 'LeetCode': 'LC', 'HackerRank': 'HR', 'CodePen': 'CP',
+    'Dev.to': 'Dev', 'Reddit': 'RD', 'Twitter': 'TW', 'Onlinegdb': 'GDB',
+    'Online': 'Online', 'Compiler': 'Compiler', 'Other': 'Link'
   };
-  return iconMap[source] || '🔗';
+  return iconMap[source] || 'Link';
 }
 
 function getColorForSource(source) {
@@ -66,39 +66,39 @@ function getColorForSource(source) {
 function getIconForCategory(category) {
   const iconMap = {
     // Technology & Programming
-    'Operating Systems': '🖥️', 'Computer Networks': '🌐', 'Data Structures': '🔢',
-    'Database Management': '🗄️', 'Artificial Intelligence': '🤖',
-    'React': '⚛️', 'JavaScript': '📜', 'Python': '🐍', 'Java': '☕',
-    'C Programming': '©️', 'C++': '➕', 'Web Development': '🌍',
-    'DevOps': '🔧', 'Mobile Development': '📱', 'Cyber Security': '🔒',
-    'Cloud Computing': '☁️', 'Software Engineering': '⚙️', 'Blockchain': '⛓️',
-    'Programming Tools': '🛠️', 'Development Tools': '🔨',
-    'Interview Preparation': '📝', 'Salesforce': '☁️', 'Career & Jobs': '💼',
+    'Operating Systems': 'OS', 'Computer Networks': 'NET', 'Data Structures': 'DS',
+    'Database Management': 'DB', 'Artificial Intelligence': 'AI',
+    'React': 'React', 'JavaScript': 'JS', 'Python': 'Py', 'Java': 'Java',
+    'C Programming': 'C', 'C++': 'C++', 'Web Development': 'Web',
+    'DevOps': 'DevOps', 'Mobile Development': 'Mobile', 'Cyber Security': 'Sec',
+    'Cloud Computing': 'Cloud', 'Software Engineering': 'SE', 'Blockchain': 'BC',
+    'Programming Tools': 'Tools', 'Development Tools': 'DevTools',
+    'Interview Preparation': 'Interview', 'Salesforce': 'SF', 'Career & Jobs': 'Career',
     
     // Entertainment & Media
-    'Movies & TV Shows': '🎬', 'Music': '🎵', 'Gaming': '🎮', 'Anime & Manga': '📺',
+    'Movies & TV Shows': 'Movies', 'Music': 'Music', 'Gaming': 'Gaming', 'Anime & Manga': 'Anime',
     
     // Lifestyle & Personal
-    'Fitness & Health': '💪', 'Cooking & Recipes': '🍳', 'Travel': '✈️',
-    'Fashion & Style': '👗', 'Photography': '📷',
+    'Fitness & Health': 'Fitness', 'Cooking & Recipes': 'Cooking', 'Travel': 'Travel',
+    'Fashion & Style': 'Fashion', 'Photography': 'Photo',
     
     // Business & Finance
-    'Business': '💼', 'Finance & Investing': '💰', 'Real Estate': '🏠',
+    'Business': 'Business', 'Finance & Investing': 'Finance', 'Real Estate': 'RE',
     
     // News & Education
-    'News & Politics': '📰', 'Science': '🔬', 'History': '📜', 'Education': '📚',
+    'News & Politics': 'News', 'Science': 'Science', 'History': 'History', 'Education': 'Edu',
     
     // Sports & Activities
-    'Sports': '⚽', 'Outdoor & Nature': '🌲',
+    'Sports': 'Sports', 'Outdoor & Nature': 'Outdoor',
     
     // Arts & Creativity
-    'Art & Design': '🎨', 'DIY & Crafts': '🛠️',
+    'Art & Design': 'Art', 'DIY & Crafts': 'DIY',
     
     // Miscellaneous
-    'Books & Reading': '📖', 'Automotive': '🚗', 'Pets & Animals': '🐾',
-    'Home & Garden': '🏡', 'General': '📂'
+    'Books & Reading': 'Books', 'Automotive': 'Auto', 'Pets & Animals': 'Pets',
+    'Home & Garden': 'Home', 'General': 'General'
   };
-  return iconMap[category] || '📁';
+  return iconMap[category] || 'Folder';
 }
 
 function getColorForCategory(category) {
@@ -143,12 +143,12 @@ router.post('/', authMiddleware, async (req, res) => {
   try {
     const { url, folderId } = req.body;
 
-    console.log('📥 New link request:', url);
+    console.log('New link request:', url);
 
     // Extract metadata from URL
     const metadata = await extractLinkMetadata(url);
     
-    console.log('📊 Extracted metadata:', {
+    console.log('Extracted metadata:', {
       title: metadata.title,
       description: metadata.description?.substring(0, 100),
       source: metadata.source
@@ -167,7 +167,7 @@ router.post('/', authMiddleware, async (req, res) => {
         metadata.description || ''
       );
 
-      console.log('🎯 Hierarchy suggestion:', hierarchy);
+      console.log('Hierarchy suggestion:', hierarchy);
 
       mlPrediction = {
         mainFolder: hierarchy.mainFolder,

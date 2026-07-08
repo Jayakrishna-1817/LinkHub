@@ -135,7 +135,7 @@ export default function Sidebar({ folders, onAddFolder, onFolderDeleted, isMobil
                   className="opacity-0 group-hover:opacity-100 text-red-500 hover:text-red-700 px-2 text-sm transition"
                   title="Delete folder"
                 >
-                  🗑️
+                  Delete
                 </button>
               </div>
               
@@ -157,7 +157,7 @@ export default function Sidebar({ folders, onAddFolder, onFolderDeleted, isMobil
                     className="opacity-0 group-hover:opacity-100 text-red-500 hover:text-red-700 px-2 text-sm transition"
                     title="Delete folder"
                   >
-                    🗑️
+                    Delete
                   </button>
                 </div>
               ))}
@@ -171,7 +171,6 @@ export default function Sidebar({ folders, onAddFolder, onFolderDeleted, isMobil
           onClick={handleLogout}
           className="w-full px-4 py-3 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200 font-semibold flex items-center justify-center gap-2"
         >
-          <span>🚪</span>
           Logout
         </button>
       </div>

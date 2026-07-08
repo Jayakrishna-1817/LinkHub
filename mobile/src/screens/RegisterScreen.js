@@ -30,7 +30,7 @@ export default function RegisterScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.logo}>🔗 LinkFind</Text>
+      <Text style={styles.logo}>LinkFind</Text>
       <Text style={styles.subtitle}>Create your account</Text>
 
       <View style={styles.form}>

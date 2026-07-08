@@ -11,11 +11,11 @@ const testConnection = async () => {
     await mongoose.connect(uri, {
       serverSelectionTimeoutMS: 5000
     });
-    console.log('✅ MongoDB connection successful!');
+    console.log('MongoDB connection successful!');
     await mongoose.connection.close();
     process.exit(0);
   } catch (error) {
-    console.error('❌ MongoDB connection failed:');
+    console.error('MongoDB connection failed:');
     console.error('Error:', error.message);
     console.error('\nPossible issues:');
     console.error('1. Check your MongoDB Atlas cluster is active');

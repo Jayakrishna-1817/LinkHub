@@ -118,7 +118,7 @@ function predictCategory(title, description, tags = []) {
   const scores = {};
   
   // Log for debugging
-  console.log('🔍 ML Prediction Input:', { title, description: description.substring(0, 100) });
+  console.log('ML Prediction Input:', { title, description: description.substring(0, 100) });
   
   // Calculate scores for each category
   Object.keys(categoryKeywords).forEach(category => {
@@ -166,7 +166,7 @@ function predictCategory(title, description, tags = []) {
         // Boost the specific framework to win
         if (scores[generic] && scores[framework] >= scores[generic] * 0.3) {
           scores[framework] += 300; // Strong boost for specific frameworks
-          console.log(`🎯 Prioritizing ${framework} over ${generic}`);
+          console.log(`Prioritizing ${framework} over ${generic}`);
         }
       }
     }
@@ -181,7 +181,7 @@ function predictCategory(title, description, tags = []) {
     }
   });
   
-  console.log('✅ ML Prediction Result:', { bestCategory, maxScore, topScores: Object.entries(scores).sort(([,a], [,b]) => b - a).slice(0, 3) });
+  console.log('ML Prediction Result:', { bestCategory, maxScore, topScores: Object.entries(scores).sort(([,a], [,b]) => b - a).slice(0, 3) });
   
   // Return results sorted by score
   const sortedResults = Object.entries(scores)
@@ -324,12 +324,18 @@ async function findBestFolder(folders, title, description, tags, source) {
   };
 }
 
+function suggestFolderName(title, description, source) {
+  const prediction = predictCategory(title, description);
+  return prediction.predictedCategory || 'General';
+}
+
 module.exports = {
   predictCategory,
   extractKeywords,
   detectSource,
   suggestHierarchicalFolder,
   findBestFolder,
+  suggestFolderName,
   categoryKeywords,
   sourceKeywords
 };

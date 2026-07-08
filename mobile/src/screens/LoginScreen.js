@@ -29,7 +29,7 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.logo}>🔗 LinkFind</Text>
+      <Text style={styles.logo}>LinkFind</Text>
       <Text style={styles.subtitle}>Smart Link Organization</Text>
 
       <View style={styles.form}>

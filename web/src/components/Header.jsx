@@ -16,7 +16,6 @@ export default function Header({ onAddLink, onMenuClick }) {
         <div className="flex-1 min-w-0">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent truncate">My Links</h2>
           <p className="text-xs sm:text-sm text-gray-500 mt-1 flex items-center gap-2">
-            <span className="animate-pulse flex-shrink-0">✨</span>
             <span className="hidden sm:inline">Save and organize your links automatically with AI</span>
             <span className="sm:hidden">AI-powered organization</span>
           </p>

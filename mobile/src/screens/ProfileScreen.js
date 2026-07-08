@@ -43,7 +43,6 @@ export default function ProfileScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.logo}>🔗</Text>
         <Text style={styles.appName}>LinkFind</Text>
         <Text style={styles.tagline}>Smart Link Organization</Text>
       </View>

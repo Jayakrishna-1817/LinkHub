@@ -8,26 +8,26 @@ async function extractLinkMetadata(url) {
       title: '',
       description: '',
       thumbnail: '',
-      source: 'other',
+      source: 'Other',
       tags: [],
       additionalInfo: {}
     };
 
     // Detect source from URL
     if (url.includes('youtube.com') || url.includes('youtu.be')) {
-      metadata.source = 'youtube';
+      metadata.source = 'YouTube';
       return await extractYouTubeMetadata(url, metadata);
     } else if (url.includes('github.com')) {
-      metadata.source = 'github';
+      metadata.source = 'GitHub';
       return await extractGitHubMetadata(url, metadata);
     } else if (url.includes('medium.com')) {
-      metadata.source = 'medium';
+      metadata.source = 'Medium';
     } else if (url.includes('twitter.com') || url.includes('x.com')) {
-      metadata.source = 'twitter';
+      metadata.source = 'Twitter';
     } else if (url.includes('stackoverflow.com')) {
-      metadata.source = 'stackoverflow';
+      metadata.source = 'Stack Overflow';
     } else if (url.includes('reddit.com')) {
-      metadata.source = 'reddit';
+      metadata.source = 'Reddit';
     }
 
     // Generic metadata extraction
@@ -38,7 +38,7 @@ async function extractLinkMetadata(url) {
       title: url,
       description: '',
       thumbnail: '',
-      source: 'other',
+      source: 'Other',
       tags: [],
       additionalInfo: {}
     };
@@ -51,7 +51,7 @@ async function extractYouTubeMetadata(url, metadata) {
     // Use YouTube oEmbed API (official, won't get rate limited)
     const oembedUrl = `https://www.youtube.com/oembed?url=${encodeURIComponent(url)}&format=json`;
     
-    console.log('🎥 Fetching YouTube metadata via oEmbed...');
+    console.log('Fetching YouTube metadata via oEmbed...');
     const response = await axios.get(oembedUrl, {
       timeout: 10000,
       headers: {
@@ -64,7 +64,7 @@ async function extractYouTubeMetadata(url, metadata) {
       metadata.description = ''; // oEmbed doesn't provide description
       metadata.thumbnail = response.data.thumbnail_url || '';
       
-      console.log('✅ YouTube oEmbed success:', { 
+      console.log('YouTube oEmbed success:', { 
         title: metadata.title,
         titleLength: metadata.title?.length 
       });
@@ -78,11 +78,11 @@ async function extractYouTubeMetadata(url, metadata) {
 
     return metadata;
   } catch (error) {
-    console.error('❌ YouTube oEmbed failed:', error.message);
+    console.error('YouTube oEmbed failed:', error.message);
     
     // Fallback: Try direct scraping with minimal headers
     try {
-      console.log('🔄 Trying fallback scraping...');
+      console.log('Trying fallback scraping...');
       const response = await axios.get(url, {
         timeout: 8000,
         headers: { 
@@ -109,12 +109,12 @@ async function extractYouTubeMetadata(url, metadata) {
       metadata.description = $('meta[property="og:description"]').attr('content') || '';
       metadata.thumbnail = $('meta[property="og:image"]').attr('content') || '';
 
-      console.log('✅ Fallback scraping result:', { 
+      console.log('Fallback scraping result:', { 
         title: metadata.title,
         titleLength: metadata.title?.length 
       });
     } catch (fallbackError) {
-      console.error('❌ Fallback also failed:', fallbackError.message);
+      console.error('Fallback also failed:', fallbackError.message);
     }
 
     return metadata;
