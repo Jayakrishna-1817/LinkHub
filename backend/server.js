@@ -29,8 +29,11 @@ app.use((req, res, next) => {
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/linkfind')
-.then(() => console.log('MongoDB connected successfully'))
-.catch((err) => console.error('MongoDB connection error:', err));
+.then(() => console.log('🚀 MongoDB connected successfully'))
+.catch((err) => {
+  console.error('❌ MongoDB connection error:', err);
+  console.error('⚠️  Please check your MONGODB_URI environment variable!');
+});
 
 // Socket.IO for real-time updates
 io.on('connection', (socket) => {
